@@ -27,4 +27,7 @@ export default class {
     if (this.slider) this.slider.resize(gl);
     // if (this.quads) this.quads.forEach((quad) => quad.resize(this.gl));
   }
+
+  /* --  Router */
+  handlePageChange(next) {}
 }

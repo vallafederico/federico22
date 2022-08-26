@@ -7,7 +7,13 @@ export default class {
   constructor() {
     this.canvas = document.getElementById("c");
     this.gl = this.canvas.getContext("webgl");
-    this.gl.clearColor(0.04, 0.04, 0.04, 1);
+    this.gl.clearColor(
+      0.06274509803921569,
+      0.06274509803921569,
+      0.06274509803921569,
+      1
+    );
+
     this.gl.vp = { dpr: Math.min(window.devicePixelRatio, 2) };
     //this.gl.enable(this.gl.CULL_FACE);
     //this.gl.cullFace(this.gl.BACK);
@@ -67,6 +73,12 @@ export default class {
     // resize scene
     if (this.scene) this.scene.resize(this.gl);
     if (this.post) this.post.resize(this.gl);
+  }
+
+  /* --- Router */
+  handlePageChange(next) {
+    this.scene?.handlePageChange(next);
+    // console.log("gl handle change, next: ", next);
   }
 
   /**

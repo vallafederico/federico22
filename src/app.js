@@ -1,5 +1,6 @@
 import Dom from "./modules/dom";
 import Gl from "./modules/gl/gl";
+import { Router } from "./modules/router";
 
 class App {
   constructor() {
@@ -10,9 +11,13 @@ class App {
   load() {}
 
   init() {
-    // this.dom = new Dom()
-    // console.log('init!');
-    // this.addEventsListeners();
+    // router
+    this.router = new Router();
+    this.router.on("T_START", ({ next }) => {
+      // PAGE TRANSITION - handling
+      this.router.swap();
+      if (this.gl) this.gl.handlePageChange(next);
+    });
 
     this.gl = new Gl();
   }
